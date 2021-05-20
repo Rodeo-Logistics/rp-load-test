@@ -1,0 +1,27 @@
+type Association {
+  AssociationUID: Int
+  Name: String
+  ShortName: String
+  CollectMembershipNumber: Boolean
+  CollectMembershipFees: Boolean
+  IsAlliancePartner: Int
+  AssociationTypeUID: Int
+  AssociationTypeAsString: String
+  createdAt: Date
+  updatedAt: Date
+}
+input AssociationInput {
+  AssociationUID: Int
+  Name: String
+  ShortName: String
+  IsAlliancePartner: Int
+  AssociationTypeUID: Int
+  AssociationTypeAsString: String
+  createdAt: Date
+  updatedAt: Date
+}
+
+input AssociationSearchInput {
+  category: String
+  searchTerm: String
+}

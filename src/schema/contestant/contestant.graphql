@@ -1,0 +1,203 @@
+type Contestant {
+  id: ID
+  ERAUID: ID
+  FullName: String
+  FName: String
+  LName: String
+  Nickname: String
+  Suffix: String
+  CType: Int
+  StatusType: Int
+  Penalty: Int
+  BioUID: Int
+  AwardUID: Int
+  HeritageUID: Int
+  HistoryUID: Int
+  InjuryCurrentUID: Int
+  InjuryHistoryUID: Int
+  QuoteUID: Int
+  PhotoUID: Int
+  Identifier: String
+  ContractorUID: Int
+  Brand: String
+  Hometown: String
+  Website: String
+  Facebook: String
+  Twitter: String
+  Instagram: String
+  YouTube: String
+  Pinterest: String
+  RookieYear: String
+  Height: String
+  Weight: String
+  createdAt: Date
+  LastUpdate: Date
+  Snapchat: String
+  LinkedIn: String
+  MemType: String
+  PurchaseDate: Date
+  userId: ID
+  Disc: Int
+  CareerEarnings: String
+  WorldChampionshipEarned: String
+  PayeeNumber: String
+  PhotoFilename: String
+  email: String
+  firstName: String
+  lastName: String
+  socialTags: String
+  role: Int
+  status: String
+  DOB: Date
+  Phone: String
+  LegalFirstName: String
+  LegalLastName: String
+  SSN: String
+  street: String
+  city: String
+  state: String
+  zip: String
+  country: String
+  street2: String
+  USCitizen: ID
+  Gender: ID
+  numberOfResults: Int
+  nominations: [Nomination]
+  youthList: [YouthManaged]
+  isParent: Boolean
+  isAthlete: Boolean
+  isYouth: Boolean
+  type: String
+  disciplineAsString: String
+  isUnregisteredAthlete: Boolean
+}
+
+type YouthManaged {
+  ERAUID: ID
+  parentId: Int
+  FullName: String
+  DOB: Date
+  Discipline: String
+  Disc: Int
+}
+
+type ContestantsMeta {
+  totalCount: Int
+}
+
+type ContestantsPayload {
+  contestants: [Contestant]
+  meta(input: ContestantsInput): ContestantsMeta
+}
+
+type AthletesPayload {
+  athletes: [Contestant]
+  meta(input: ContestantsInput): ContestantsMeta
+}
+
+type ContestantsWithoutProfilePayload {
+  contestants: [Contestant]
+  meta(input: ContestantsInput): ContestantsMeta
+}
+
+input ContestantsInput {
+  ERAUID: ID
+  filters: String
+  pageNumber: Int
+  sortDirection: String
+  orderBy: String
+  resultsPerPage: Int
+  nameSearch: String
+  isQueryTypeSearch: Boolean
+}
+
+input NewContestantInput {
+  nickname: String
+  suffix: String
+  cType: Int
+  statusType: Int
+  penalty: Int
+  bioUID: Int
+  awardUID: Int
+  heritageUID: Int
+  historyUID: Int
+  injuryCurrentUID: Int
+  injuryHistoryUID: Int
+  quoteUID: Int
+  photoUID: Int
+  identifier: String
+  contractorUID: Int
+  brand: String
+  hometown: String
+  website: String
+  facebook: String
+  twitter: String
+  instagram: String
+  youTube: String
+  pinterest: String
+  rookieYear: String
+  height: String
+  weight: String
+  lastUpdate: Date
+  snapchat: String
+  linkedIn: String
+  memType: String
+  purchaseDate: Date
+  userId: ID
+  disc: Int
+  careerEarnings: String
+  worldChampionshipEarned: String
+  payeeNumber: String
+  photoFilename: String
+  email: String
+  firstName: String
+  lastName: String
+  socialTags: String
+  role: Int
+  status: String
+  DOB: Date
+  phone: String
+  legalFirstName: String
+  legalLastName: String
+  SSN: String
+  street: String
+  city: String
+  state: String
+  country: String
+  zip: String
+  street2: String
+  USCitizen: ID
+  Gender: ID
+}
+
+input MergableAttributes {
+  Disc: ID
+  DOB: String
+  ERAUID: Int!
+  firstName: String
+  Hometown: String
+  lastName: String
+  Nickname: String
+  Phone: String
+  recordType: String
+  userId: Int
+}
+
+input MergeAthletesInput {
+  mergedValues: MergableAttributes
+  baseERAUID: Int!
+  disabledERAUID: Int!
+  mergedByUserId: Int!
+}
+
+type MergeAthletesPayload {
+  mergedERAUID: Int
+  deletedERAUID: Int
+  error: String
+}
+
+type BuddiesPayload {
+  buddyGroupContestants: [Contestant]
+  buddyManager: Contestant
+  isBuddyManager: Boolean
+}

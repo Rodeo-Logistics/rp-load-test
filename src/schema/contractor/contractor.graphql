@@ -1,0 +1,33 @@
+# import * from '../contact/contact.graphql'
+
+type Contractor {
+  id: ID
+  ContractorUID: ID
+  DBA_SHORT: String
+  DBA: String
+  ShortName: String
+  ContractorType: String
+  Rank: Int
+  Contact: Contact
+}
+
+type ContractorsMeta {
+  totalCount: Int
+}
+
+type ContractorsPayload {
+  contractors: [Contractor]
+  meta(input: ContractorsInput): ContractorsMeta
+}
+
+input ContractorsInput {
+  ContractorUID: Int
+  ContractorUIDs: [Int]
+  filters: String
+  pageNumber: Int
+  sortDirection: String
+  orderBy: String
+  resultsPerPage: Int
+  nameSearch: String
+  isQueryTypeSearch: Boolean
+}

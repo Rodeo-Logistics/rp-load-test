@@ -1,0 +1,37 @@
+type Coupon {
+  id: ID
+  CouponUID: Int
+  CouponCode: String
+  CouponType: String
+  Description: String
+  DollarDisc: Float
+  NomDisc: Float
+  FeeDisc: Float
+  StartDate: Date
+  ExpireDate: Date
+  EventUID: Int
+  ERAUID: Int
+  createdAt: Date
+  updatedAt: Date
+  MaxUsageNumberPerContestant: Int
+}
+
+type CouponsMeta {
+  totalCount: Int
+}
+
+type CouponsPayload {
+  coupons: [Coupon]
+  meta(input: CouponsInput): CouponsMeta
+}
+
+input CouponsInput {
+  CouponUID: ID
+  nameSearch: String
+  filters: String
+  pageNumber: Int
+  sortDirection: String
+  orderBy: String
+  resultsPerPage: Int
+  isQueryTypeSearch: Boolean
+}

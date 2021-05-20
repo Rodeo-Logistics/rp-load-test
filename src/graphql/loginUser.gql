@@ -1,0 +1,82 @@
+mutation Authenticate($input: LoginInputType!) {
+  loginUser(input: $input) {
+    user {
+      id
+      DOB
+      Gender
+      email
+      ERAUID
+      lastName
+      firstName
+      disciplineId
+      phone
+      street
+      street2
+      city
+      state
+      zip
+      country
+      socialTags
+      nickname
+      hometown
+      careerEarnings
+      worldChampionshipEarned
+      height
+      weight
+      facebook
+      twitter
+      instagram
+      LegalFirstName
+      LegalLastName
+      SSN
+      USCitizen
+      isParent
+      isAthlete
+      youthAthletes {
+        ERAUID
+        firstName
+        lastName
+        Disc
+        DOB
+        Gender
+        entryData {
+          confirmedEntries {
+            EventUID
+            entries {
+              EPUID
+            }
+          }
+          pendingEntries {
+            EventUID
+            entries {
+              EPUID
+            }
+          }
+        }
+      }
+      entryData {
+        confirmedEntries {
+          EventUID
+          entries {
+            EPUID
+          }
+        }
+        pendingEntries {
+          EventUID
+          entries {
+            EPUID
+          }
+        }
+      }
+    }
+    token {
+      expiresIn
+      tokenType
+      accessToken
+      refreshToken
+    }
+    error {
+      message
+    }
+  }
+}

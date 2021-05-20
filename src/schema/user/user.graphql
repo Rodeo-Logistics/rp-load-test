@@ -1,0 +1,226 @@
+enum RoleEnum {
+  athlete
+  admin
+  user
+  athlete_support
+}
+
+type User {
+  careerEarnings: String
+  city: String
+  createdAt: Date
+  country: String
+  disciplineId: ID
+  email: String
+  entryData: EntryData
+  facebook: String
+  firstName: String
+  fullName: String
+  height: String
+  hometown: String
+  id: ID
+  associationId: ID
+  instagram: String
+  isParent: Boolean
+  isAthlete: Boolean
+  lastLogin: String
+  lastName: String
+  nickname: String
+  nominations: [Nomination]
+  phone: String
+  photoFileName: String
+  role: RoleEnum
+  state: String
+  status: String
+  socialTags: String
+  street: String
+  street2: String
+  twitter: String
+  updatedAt: Date
+  worldChampionshipEarned: String
+  weight: String
+  youthAthletes: [YouthAthlete]
+  zip: String
+  DOB: Date
+  ERAUID: ID
+  LegalFirstName: String
+  LegalLastName: String
+  PayeeNumber: String
+  SSN: String
+  USCitizen: ID
+  Gender: ID
+  fullNameWithNickname: String
+  isUnregisteredAthlete: Boolean
+  TaxInfoUpdateDate: Date
+  SSNLastFour: String
+  isYouth: Boolean
+  isAlreadyInBuddyGroup: Boolean
+  isEligibleBuddy: Boolean
+  ineligibleReason: String
+}
+
+input UserInputType {
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  DOB: String
+  disciplineId: ID
+  Gender: ID
+  phone: String
+  inviteToken: String
+  youthInviteToken: String
+}
+
+input NewYouthAthleteType {
+  firstName: String
+  lastName: String
+  DOB: String
+  disciplineId: ID
+  Gender: ID
+  country: String
+  street: String
+  city: String
+  state: String
+  zip: String
+  signature: String
+  isDisclosable: Boolean
+}
+
+input RegistrationInputType {
+  user: UserInputType
+  youthAthletes: [NewYouthAthleteType]
+}
+
+type Token {
+  tokenType: String
+  accessToken: String
+  refreshToken: String
+  expiresIn: Date
+}
+
+type RegistrationErrorMessages {
+  field: String
+  location: String
+  messages: [String]
+}
+
+type RegistrationError {
+  code: Int
+  message: String
+  errors: [RegistrationErrorMessages]
+  stack: String
+}
+
+type UserPayloadType {
+  token: Token
+  user: User
+  error: RegistrationError
+}
+
+input EditUserInput {
+  id: ID!
+  ERAUID: ID
+  careerEarnings: String
+  worldChampionshipEarned: String
+  DOB: String
+  height: String
+  weight: String
+  facebook: String
+  twitter: String
+  instagram: String
+  street: String
+  street2: String
+  city: String
+  state: String
+  zip: String
+  country: String
+  status: String
+  email: String
+  lastLogin: String
+  phone: String
+  socialTags: String
+  updatedAt: Date
+  socialMediaHashTags: String
+  USCitizen: ID
+  Gender: ID
+  photoFileName: String
+  LegalFirstName: String
+  LegalLastName: String
+  SSN: String
+  nominations: [NominationInputType]
+  entryData: EntryDataInputType
+  youthAthletes: [YouthAthleteInputType]
+  isParent: Boolean
+  isAthlete: Boolean
+  firstName: String
+  lastName: String
+  disciplineId: ID
+  nickname: String
+  hometown: String
+  isUnregisteredAthlete: Boolean
+  TaxInfoUpdateDate: Date
+}
+
+type EditUserPayload {
+  success: Boolean
+  error: String
+  user: User
+}
+
+input LoginInputType {
+  email: String!
+  password: String!
+}
+
+input NominationInputType {
+  id: ID
+  NomUID: ID
+  EventUID: ID
+  ERAUID: ID
+  CompType: [Int]
+  NomFee: Float
+  TransFee: Float
+  TTLFees: Float
+  NomDate: Date
+  createdAt: Date
+  CouponUID: ID
+  SegmentUID: ID
+  chargeId: ID
+  DisciplineAsString: String
+  NumberOfNominations: Int
+  totalOnStripe: Float
+  totalTransactionFee: Float
+  chargeHasMoreThanOneNomination: Boolean
+  EventName: String
+  EventLocation: String
+  EventType: String
+  firstName: String
+  lastName: String
+  FullName: String
+  email: String
+  userId: ID
+  mainDisciplineAsString: String
+  mainDiscipline: Int
+  CouponCode: String
+  isFree: Boolean
+  Segments: [Int]
+  rank: Int
+  isAlliancePartner: Boolean
+  isUpcoming: Boolean
+}
+
+input EntryDataInputType {
+  pendingEntries: [EntryInputType]
+  confirmedEntries: [EntryInputType]
+}
+
+input EntryInputType {
+  EventUID: ID
+}
+
+input BuddySearchInput {
+  name: String
+  EventUID: ID
+  managerERAUID: ID
+}

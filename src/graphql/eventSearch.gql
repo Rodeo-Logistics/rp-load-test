@@ -1,0 +1,38 @@
+query EVENT_SEARCH($input: EventSearchInput!) {
+  eventSearch(input: $input) {
+    id
+    rank
+    rankLabel
+    EventDate
+    dateStart
+    dateEnd
+    dateRegistrationEnd
+    EventFormat
+    eventType
+    eventTypeName
+    name
+    location
+    EventName
+    SubmissionStatus
+    TimezoneNameIana
+    EventRank
+    TimeZoneUID
+    TimeZoneName
+    TimeZoneOffsetInMinutes
+    EventText
+    AllowEntry
+    EventImage
+    Season
+    isAlliancePartner
+    Associations {
+      AssociationUID
+      Name
+      ShortName
+      IsAlliancePartner
+      AssociationTypeUID
+      AssociationTypeAsString
+      createdAt
+      updatedAt
+    }
+  }
+}

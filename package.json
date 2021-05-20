@@ -1,0 +1,35 @@
+{
+  "name": "easygraphql-load-tester",
+  "version": "1.0.0",
+  "description": "RoLo load testing",
+  "author": "nrosa@rodeologistics.co",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "now": "easygraphql-now schema.gql --local -p=5000 --graphiql",
+    "load-test": "node index.js",
+    "bundle": "webpack"
+  },
+  "dependencies": {
+    "dotenv": "^9.0.2",
+    "easygraphql-load-tester": "^2.0.3",
+    "graphql": "^15.5.0",
+    "graphql-import": "^1.0.2",
+    "graphql-tag": "^2.12.4",
+    "graphql.macro": "^1.4.2",
+    "merge-graphql-schemas": "^1.7.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-macros": "^3.1.0",
+    "core-js": "^3.12.1",
+    "easygraphql-now": "0.0.6",
+    "k6": "0.0.0",
+    "node-polyfill-webpack-plugin": "^1.1.2",
+    "process": "^0.11.10",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0"
+  }
+}

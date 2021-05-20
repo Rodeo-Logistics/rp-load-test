@@ -1,0 +1,34 @@
+type Livestock {
+  id: ID
+  AnimalUID: ID
+  NickName: String
+  ContractorUID: ID
+  ERAUID: ID
+  Brand: String
+  LastUpdate: String
+  AnimalType: String
+  AnimalTypeId: Int
+  OwnerName: String
+  ContractorName: String
+  DisciplineNames: String
+}
+
+type LivestockMeta {
+  totalCount: Int
+}
+
+type LivestockPayload {
+  livestock: [Livestock]
+  meta(input: LivestockInput): LivestockMeta
+}
+
+input LivestockInput {
+  AnimalUID: ID
+  nameSearch: String
+  filters: String
+  pageNumber: Int
+  sortDirection: String
+  orderBy: String
+  resultsPerPage: Int
+  isQueryTypeSearch: Boolean
+}

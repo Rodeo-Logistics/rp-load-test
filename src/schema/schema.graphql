@@ -1,0 +1,76 @@
+# import * from 'association/association.graphql'
+# import * from 'contestant/contestant.graphql'
+# import * from 'contractor/contractor.graphql'
+# import * from 'coupon/coupon.graphql'
+# import * from 'date/date.graphql'
+# import * from 'discipline/discipline.graphql'
+# import * from 'disciplineNominatableSegment/disciplineNominatableSegment.graphql'
+# import * from 'entry/entry.graphql'
+# import * from 'entryInvite/entryInvite.graphql'
+# import * from 'entryPool/entryPool.graphql'
+# import * from 'event/event.graphql'
+# import * from 'livestock/livestock.graphql'
+# import * from 'livestockOwner/livestockOwner.graphql'
+# import * from 'nomination/nomination.graphql'
+# import * from 'stockdraw/stockdraw.graphql'
+# import * from 'user/user.graphql'
+# import * from 'venue/venue.graphql'
+# import * from 'youthAthlete/youthAthlete.graphql'
+
+type Query {
+  associations(input: AssociationSearchInput): [Association]
+  athletesPayload(input: ContestantsInput!): AthletesPayload
+  contestantsForMergePayload(input: ContestantsInput!): ContestantsPayload
+  contestantsPayload(input: ContestantsInput!): ContestantsPayload
+  contestantsWithoutProfilePayload(
+    input: ContestantsInput!
+  ): ContestantsWithoutProfilePayload
+  contractorsPayload(input: ContractorsInput): ContractorsPayload
+  couponsPayload(input: CouponsInput!): CouponsPayload
+  buddyEntryPoolGet(ERAUID: ID, EventUID: ID): [GroupedBuddyEntries]
+  entryPoolGet(input: EntryPoolInput): EntryPool
+  entryInviteGet(input: EntryInviteInput): EntryInvite
+  entryPoolGetUnmatchedPartners(input: EntryPoolPartnerInput): [EntryPool]
+  athleteTransactionsEntriesForEvent(
+    ERAUID: ID
+    EventUID: ID
+  ): [entryTransaction]
+  eventGet(id: ID!, ERAUID: ID): Event
+  eventSearch(input: EventSearchInput!): [Event]
+  eventsPayload(input: EventsInput!): EventsPayload
+  getContestantBuddiesForEvent(ERAUID: ID, EventUID: ID): BuddiesPayload
+  getDisciplinesNominatableBySegment(DisciplineTypeUIDs: [Int]): [DisciplineNominatableSegment]
+  nominationsPayload(input: NominationsInput!): NominationsPayload
+  nominationsPerEventPayload(
+    input: NominationsInput!
+  ): NominationsPerEventPayload
+  nominationsPerContestantPayload(
+    input: NominationsPerContestantInput!
+  ): NominationsPerContestantPayload
+  livestockPayload(input: LivestockInput!): LivestockPayload
+  livestockOwnersPayload(input: LivestockOwnersInput!): LivestockOwnersPayload
+  performanceDrawGet(input: PerformanceDrawInput): [EntryPool]
+  searchTeamPartner(name: String, eventType: EventCategoryType!): [User]
+  buddySearch(input: BuddySearchInput!): [User]
+  user(id: ID, token: String): User
+  venuesPayload(input: VenuesInput!): VenuesPayload
+  youthAthlete(id: ID!): YouthAthlete
+  stockDrawAvailableTeamsGet(
+    performanceUID: ID!
+    disciplineId: ID!
+  ): [StockDrawAvailableTeam]
+  stockDrawListGet(input: StocDrawListInput!): [StockDraw]
+}
+
+type Mutation {
+  addYouthAthletes(input: AddYouthAthletesInput!): AddYouthAthletesPayload
+  editUser(input: EditUserInput!): EditUserPayload
+  editYouthAthlete(input: EditYouthAthleteInput!): YouthAthletePayload
+  eventCreate(input: EditEventInput!): EditEventPayload
+  loginUser(input: LoginInputType!): UserPayloadType
+  mergeAthletes(input: MergeAthletesInput): MergeAthletesPayload
+  registerUser(input: RegistrationInputType!): UserPayloadType
+  editEntryPartner(input: editPartnerInputType!): EntryPool
+  editMyEntryPartner(input: editPartnerInputType!): EntryPool
+  createUpdateTeamStockDraw(input: CreateUpdateTeamStockDrawInput!): [StockDraw]
+}

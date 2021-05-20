@@ -1,0 +1,9 @@
+type EntryInvite {
+  firstName: String
+  lastName: String
+  email: String
+}
+
+input EntryInviteInput {
+  inviteToken: String
+}

@@ -1,0 +1,7 @@
+type Discipline {
+  ID: Int,
+	TypeUID: Int,
+  Name: String,
+	ShortName: String,
+	ScoreType: Int,
+}

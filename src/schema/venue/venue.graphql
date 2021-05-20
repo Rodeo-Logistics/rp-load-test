@@ -1,0 +1,35 @@
+type Venue {
+  id: ID
+  VenueUID: ID
+  Indoor: String
+  ContactName: String
+  City: String
+  State: String
+  Zip: String
+  FName: String
+  LName: String
+  Email: String
+  Phone1: String
+  Phone2: String
+  searchTitle: String
+}
+
+type VenuesMeta {
+  totalCount: Int
+}
+
+type VenuesPayload {
+  venues: [Venue]
+  meta(input: VenuesInput): VenuesMeta
+}
+
+input VenuesInput {
+  VenueUID: ID
+  nameSearch: String
+  filters: String
+  pageNumber: Int
+  sortDirection: String
+  orderBy: String
+  resultsPerPage: Int
+  isQueryTypeSearch: Boolean
+}

@@ -1,0 +1,83 @@
+type Nomination {
+  id: ID
+  NomUID: ID
+  EventUID: ID
+  ERAUID: ID
+  CompType: [Int]
+  NomFee: Float
+  TransFee: Float
+  TTLFees: Float
+  NomDate: Date
+  createdAt: Date
+  CouponUID: ID
+  SegmentUID: ID
+  SegmentAsString: String
+  ShortName: String
+  chargeId: ID
+  DisciplineAsString: String
+  NumberOfNominations: Int
+  totalOnStripe: Float
+  NominationRevenue: Float
+  totalTransactionFee: Float
+  totalAmountWithDiscount: Float
+  chargeHasMoreThanOneNomination: Boolean
+  EventName: String
+  EventLocation: String
+  EventType: String
+  EventDate: Date
+  EventDateTo: Date
+  DivisionNumber: Int
+  DivisionName: String
+  Points: Float
+  firstName: String
+  lastName: String
+  FullName: String
+  email: String
+  userId: ID
+  mainDisciplineAsString: String
+  mainDiscipline: Int
+  CouponCode: String
+  isFree: Boolean
+  Segments: [Int]
+  rank: Int
+  isAlliancePartner: Boolean
+  isUpcoming: Boolean
+}
+
+type NominationsMeta {
+  totalCount: Int
+}
+
+type NominationsPayload {
+  nominations: [Nomination]
+  meta(input: NominationsInput): NominationsMeta
+}
+
+type NominationsPerEventPayload {
+  nominations: [Nomination]
+  meta(input: NominationsInput): NominationsMeta
+}
+
+type NominationsPerContestantPayload {
+  nominations: [Nomination]
+  meta(input: NominationsPerContestantInput): NominationsMeta
+}
+
+input NominationsInput {
+  EventUID: ID
+  filters: String
+  pageNumber: Int
+  sortDirection: String
+  orderBy: String
+  resultsPerPage: Int
+  isUpcoming: String
+}
+
+input NominationsPerContestantInput {
+  ERAUID: ID
+  filters: String
+  pageNumber: Int
+  sortDirection: String
+  orderBy: String
+  resultsPerPage: Int
+}

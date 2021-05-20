@@ -1,0 +1,24 @@
+type PerformanceDiscipline {
+  id: Int
+  name: String
+  Short: String
+  GoNumber: Int
+  PreferenceEligible: Int
+  NumberOfAthletes: Int
+  NumberOfAnimals: Int
+  NumberOfJudges: Int
+  StockDrawIsSubmitted: Int
+  EventUID: Int
+}
+input PerformanceDisciplineInput {
+  id: Int
+  name: String
+  Short: String
+  GoNumber: Int
+  PreferenceEligible: Int
+  NumberOfAthletes: Int
+  NumberOfAnimals: Int
+  NumberOfJudges: Int
+  StockDrawIsSubmitted: Int
+  EventUID: Int
+}

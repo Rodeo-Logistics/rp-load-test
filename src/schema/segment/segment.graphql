@@ -1,0 +1,8 @@
+type Segment {
+  SegmentUID: Int
+  Name: String
+  ShortName: String
+  StartDate: Date
+  EndDate: Date
+  NominatableByYouth: Boolean
+}

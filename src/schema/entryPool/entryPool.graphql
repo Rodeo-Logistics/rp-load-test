@@ -1,0 +1,191 @@
+# import * from '../contestant/contestant.graphql'
+# import * from '../performance/performance.graphql'
+
+type EntryPool {
+  EntryChargeRequestUID: ID
+  EPUID: ID
+  EventUID: ID
+  ERAUID: ID
+  PayingERAUID: ID
+  userId: ID
+  CompType: ID
+  PoolTeamID: ID
+  QualifyTeamID: ID
+  Pref1: Int
+  Pref2: Int
+  Pref3: Int
+  Out1: Int
+  Out2: Int
+  OutIfPrefNotMet: Boolean
+  createdAt: Date
+  updatedAt: Date
+  TotalAmountPaid: String
+  Pref1AsDate: Date
+  Pref2AsDate: Date
+  Pref3AsDate: Date
+  Out1AsDate: Date
+  Out2AsDate: Date
+  Pref1AsString: String
+  Pref2AsString: String
+  Pref3AsString: String
+  Out1AsString: String
+  Out2AsString: String
+  Pref1Type: ID
+  Pref2Type: ID
+  Pref3Type: ID
+  Out1Type: ID
+  Out2Type: ID
+  EventName: String
+  FullName: String
+  Discipline: String
+  PartnerEPUID: ID
+  email: String
+  firstName: String
+  lastName: String
+  Phone: String
+  LegalFirstName: String
+  LegalLastName: String
+  Nickname: String
+  street: String
+  street2: String
+  state: String
+  city: String
+  zip: String
+  country: String
+  USCitizen: ID
+  DOB: Date
+  Hometown: String
+  PhotoFilename: String
+  TeammateERAUID: ID
+  TeammateUserId: ID
+  PaymentStatus: Boolean
+  PartnerPaymentStatus: Boolean
+  PaidPartnerEntryFees: Boolean
+  TeammateName: String
+  PaymentType: String
+  entryRequestCreatedAt: Date
+  entryRequestUpdatedAt: Date
+  IsYouthAthlete: Boolean
+  HasAgreed: Boolean
+  HorseName: String
+  HasSSN: Boolean
+  Status: String
+  EntryStatus: String
+  fullNameWithNickname: String
+  EventAthleteAgreementURL: String
+  entryTransactions: [entryTransaction]
+  teammate: EntryPool
+  preferences: [Preference]
+  performances: [Performance]
+  entryCountAsLetter: String
+  partnerEntryCountAsLetter: String
+  isUnregisteredAthlete: Boolean
+  SSNLastFour: String
+  entryPaymentLabel: String
+  PayLater: Boolean
+  NominationSegments: [String]
+}
+
+type Preference {
+  PerformanceUID: ID
+  PerformanceAsString: String
+  Position: Int
+  IsNot: Boolean
+}
+
+input EntryPoolInput {
+  EPUID: ID
+  ERAUID: ID
+}
+
+input PerformanceDrawInput {
+  EventUID: ID
+}
+
+input EntryPoolPartnerInput {
+  EPUID: ID
+  ERAUID: ID
+  EventUID: ID
+  disciplineId: ID
+}
+
+input PartnerInputType {
+  ERAUID: ID
+  EPUID: ID
+  FName: String
+  LName: String
+}
+
+input editPartnerInputType {
+  disciplineId: ID
+  EPUID: ID
+  ERAUID: ID
+  EventUID: ID
+  shouldCancelEntry: Boolean
+  partner: PartnerInputType
+}
+
+type entryTransaction {
+  eventId: ID
+  date: Date
+  subtotal: Float
+  wcraTransactionFee: Float
+  transactionFee: Float
+  baseFee: Float
+  stripeFee: Float
+  totalFee: Float
+  numberOfEntries: Int
+  stripeRawResponse: String
+  payingERAUID: ID
+  ccBrand: String
+  ccLast4: String
+  entryChargeRequestUID: ID
+  isPaying: Boolean
+  payeeFullName: String
+  paymentType: String
+  PayLater: Boolean
+  isBuddyTransaction: Boolean
+  entries: [EventEntry]
+}
+
+type EventEntry {
+  status: String
+  disciplineId: ID
+  EPUID: String
+  FullName: String
+  teammateERAUID: ID
+  partnerEPUID: ID
+  partnerFullName: String
+  partnerDisciplineId: String
+  entryFee: Float
+  ERAUID: ID
+  isPaid: Boolean
+  prefCount: Int
+  notCount: Int
+  EventBuddyGroupUID: ID
+  HorseName: String
+  Pref1: Int
+  Pref2: Int
+  Pref3: Int
+  Out1: Int
+  Out2: Int
+  Pref1AsDate: Date
+  Pref2AsDate: Date
+  Pref3AsDate: Date
+  Out1AsDate: Date
+  Out2AsDate: Date
+  NominationSegments: String
+}
+
+type BuddyEntries {
+  buddyEventEntries: [EntryPool]
+}
+
+type GroupedBuddyEntries {
+  FullName: String
+  TotalAmountPaid: String
+  createdAt: Date
+  ERAUID: ID
+  PayLater: Boolean
+  entries: [EntryPool]
+}

@@ -1,0 +1,51 @@
+type Entry {
+  EPUID: ID
+  CompType: ID
+  PaymentStatus: Boolean
+  PayLater: Boolean
+  EntryChargeRequestUID: ID
+  EventUID: ID
+  EventName: String
+  EventDate: Date
+  EventDateTo: Date
+  EventImage: String
+  EventLocation: String
+  EntryDateTo: Date
+  rank: Int
+  isUpcoming: Boolean
+  isAlliancePartner: Boolean
+  HasAgreed: Boolean
+  Pref1: Int
+  Pref2: Int
+  Pref3: Int
+  Out1: Int
+  Out2: Int
+  Pref1AsDate: Date
+  Pref2AsDate: Date
+  Pref3AsDate: Date
+  Out1AsDate: Date
+  Out2AsDate: Date
+  OutIfPrefNotMet: Boolean
+  partner: PartnerEntry
+  entryPaymentLabel: String
+}
+
+type PartnerEntry {
+  id: ID
+  EPUID: ID
+  fullNameWithNickname: String
+  city: String
+  state: String
+}
+
+type EntryData {
+  pendingEntries: [EntriesByEvent]
+  confirmedEntries: [EntriesByEvent]
+}
+
+type EntriesByEvent {
+  EventUID: ID
+  PayLaterTotal: Float
+  PayLater: Boolean
+  entries: [Entry]
+}

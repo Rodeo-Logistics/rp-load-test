@@ -1,0 +1,200 @@
+# import * from '../association/association.graphql'
+# import * from '../disciplineFee/disciplineFee.graphql'
+# import * from '../performance/performance.graphql'
+# import * from '../segment/segment.graphql'
+
+type Event {
+  id: ID
+  EventUID: ID
+  EventDate: Date
+  totalNominations: Int
+  totalEntries: Int
+  entryFee: Float
+  EventFormat: Int
+  eventType: Int
+  eventTypeName: String
+  name: String
+  dateRegistrationStart: Date
+  dateRegistrationEnd: Date
+  dateStart: Date
+  dateEnd: Date
+  VenueUID: Int
+  eventDrawDate: Date
+  firstPerformance: Date
+  firstPerformanceRiding: Date
+  isSlack: Int
+  location: String
+  rank: Int
+  rankLabel: String
+  rankShort: String
+  purse: Float
+  performances: [Performance]
+  IsEntryExclusive: Int
+  EventName: String
+  SubmissionStatus: Int
+  EventRank: Int
+  TimeZoneUID: Int
+  TimeZoneName: String
+  TimeZoneOffsetInMinutes: Int
+  TimezoneNameIana: String
+  CommunicationTextTradeDate: Int
+  CommunicationTextStockDraw: Int
+  CommunicationTextPostedResults: Int
+  SecretaryUID: Int
+  SanctionBodyUID: Int
+  NumberOfPrefs: Int
+  NumberOfNots: Int
+  AllowOutIfPrefNotMet: Int
+  ContractorUID: Int
+  TradeDate: Date
+  EventText: String
+  AllowEntry: Int
+  IsNomLastPerformance: Int
+  EventImage: String
+  EventAthleteAgreementURL: String
+  SecondaryContractors: [Int]
+  nominationFee: Float,
+  nominationOnEntryFee: Float,
+  nominatableOnEntrySegments: [Segment]
+  DisciplineFees: [DisciplineFee]
+  Season: Int
+  Associations: [Association]
+  Website: String
+  Facebook: String
+  Instagram: String
+  ResultsURL: String
+  IsWcraManaged: Int
+  ShowStallsLink: Int
+  isAlliancePartner: Boolean
+  ShouldCollectTaxInfo: Boolean
+  AllowsPayLater: Boolean
+  AllowsBuddyGroup: Boolean
+  hasNominations: Boolean
+  entryCounts: [EventEntryCounts]
+  AllowsNomination: Boolean
+  AllowsNominationOnEntry: Boolean
+  NominationOnEntryDiscountPercentage: Int
+}
+
+type EventEntryCounts {
+  ERAUID: ID
+  disciplines: [DisciplineCounts]
+}
+type DisciplineCounts {
+  compType: ID,
+  entryCount: Int
+}
+
+type EventsMeta {
+  totalCount: Int
+}
+
+type EventsPayload {
+  events: [Event]
+  meta(input: EventsInput): EventsMeta
+}
+
+type EditEventPayload {
+  event: Event
+}
+
+input EventInput {
+  EventUID: ID
+}
+
+input EventsInput {
+  EventUID: ID
+  nameSearch: String
+  isActive: Boolean
+  orderBy: String
+  sortDirection: String
+  filters: String
+  pageNumber: Int
+  resultsPerPage: Int
+  isUpcoming: Boolean
+  "These are an array of strings which resolve to the status of an event"
+  SubmissionStatus: [String]
+  isQueryTypeSearch: Boolean
+}
+
+input EditEventInput {
+  id: ID
+  totalNominations: Int
+  totalEntries: Int
+  entryFee: Float
+  EventFormat: Int
+  eventType: Int
+  eventTypeName: String
+  name: String
+  dateRegistrationStart: Date
+  dateRegistrationEnd: Date
+  dateStart: Date
+  dateEnd: Date
+  VenueUID: Int
+  eventDrawDate: Date
+  firstPerformance: Date
+  firstPerformanceRiding: Date
+  isSlack: Int
+  location: String
+  rank: Int
+  rankLabel: String
+  rankShort: String
+  purse: Float
+  performances: [PerformanceInput]
+  EventName: String
+  SubmissionStatus: Int
+  EventRank: Int
+  TimeZoneUID: Int
+  TimeZoneName: String
+  TimeZoneOffsetInMinutes: Int
+  CommunicationTextTradeDate: Int
+  CommunicationTextStockDraw: Int
+  CommunicationTextPostedResults: Int
+  SecretaryUID: Int
+  SanctionBodyUID: Int
+  NumberOfPrefs: Int
+  NumberOfNots: Int
+  AllowOutIfPrefNotMet: Int
+  ContractorUID: Int
+  TradeDate: Date
+  EventText: String
+  AllowEntry: Int
+  IsNomLastPerformance: Int
+  EventImage: String
+  EventAthleteAgreementURL: String
+  SecondaryContractors: [Int]
+  DisciplineFees: [DisciplineFeeInput]
+  Season: Int
+  Associations: [AssociationInput]
+  Website: String
+  Facebook: String
+  Instagram: String
+  ResultsURL: String
+  IsWcraManaged: Int
+  ShowStallsLink: Int
+  isAlliancePartner: Boolean
+  ShouldCollectTaxInfo: Boolean
+  AllowsPayLater: Boolean
+  AllowsBuddyGroup: Boolean
+  AllowsNomination: Boolean
+  AllowsNominationOnEntry: Boolean
+  NominationOnEntryDiscountPercentage: Int
+}
+
+enum NominationOrEntry {
+  nomination
+  entry
+}
+
+input EventSearchInput {
+  searchTerm: String!
+  searchType: NominationOrEntry!
+  ERAUID: ID
+  associationIds: [Int]
+  showOpenEventsOnly: Boolean
+}
+
+enum EventCategoryType {
+  YOUTH
+  OPEN
+}

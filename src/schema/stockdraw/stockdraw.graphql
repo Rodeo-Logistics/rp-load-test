@@ -1,0 +1,73 @@
+type StockDrawAvailableTeam {
+  HeaderID: ID
+  HeelerID: ID
+  HeaderEPUID: Int
+  HeelerEPUID: Int
+  HeaderName: String
+  HeelerName: String
+  primaryTeammateName: String
+  secondaryTeammateName: String
+  PerformanceUID: ID
+  Position: Int
+  HeaderPhone: String
+  HeelerPhone: String
+  HeaderEmail: String
+  HeelerEmail: String
+  entryCountAsLetter: String
+  partnerEntryCountAsLetter: String
+}
+
+input StockDrawInput {
+  PerformanceUID: ID
+}
+input StocDrawListInput {
+  PerformanceUID: ID!
+  CompType: Int!
+}
+
+type StockDraw {
+  StockDrawUID: Int
+  PerformanceUID: ID
+  CompType: Int
+  EventUID: ID
+  NumberOfAnimals: Int
+  NumberOfAthletes: Int
+  NumberOfJudges: Int
+  PartnerERAUID: Int
+  PartnerEPUID: Int
+  EPUID: Int
+  Position: Int
+  AnimalUID: Int
+  AnimalName: String
+  AnimalBrand: String
+  AnimalIdentifier: String
+  ERAUID: Int
+  ContestantName: String
+  TeammateName: String
+  entryCountAsLetter: String
+  partnerEntryCountAsLetter: String
+  createdAt: Date
+  updatedAt: Date
+}
+
+input CreateUpdateTeamStockDrawInput {
+  PerformanceUID: ID!
+  CompType: Int!
+  list: [TeamStockDrawInput]
+}
+input TeamStockDrawInput {
+  AnimalUID: ID
+  CompType: Int
+  EPUID: ID
+  ERAUID: ID
+  EventUID: ID
+  NumberOfAnimals: Int
+  NumberOfAthletes: Int
+  PartnerEPUID: ID
+  PartnerERAUID: ID
+  PerformanceUID: ID
+  Position: Int
+  StockDrawUID: Int
+  createdAt: Date
+  updatedAt: Date
+}

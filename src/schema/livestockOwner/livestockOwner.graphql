@@ -1,0 +1,19 @@
+type LivestockOwner {
+  id: ID
+  name: String
+}
+
+type LivestockOwnersMeta {
+  totalCount: Int
+}
+
+type LivestockOwnersPayload {
+  livestockOwners: [LivestockOwner]
+  meta(input: LivestockOwnersInput): LivestockOwnersMeta
+}
+
+input LivestockOwnersInput {
+  type: String
+  inputQuery: String
+  selectedOwnerId: Int
+}

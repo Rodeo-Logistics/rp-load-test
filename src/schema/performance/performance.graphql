@@ -1,0 +1,39 @@
+# import * from '../performanceDiscipline/performanceDiscipline.graphql'
+
+type Performance {
+  PerformanceUID: Int
+  EventUID: Int
+  PerformanceNum: Int
+  PerformanceDate: Date
+  PerformanceName: String
+  CompLevel: Int
+  CompLevelAsString: String
+  Rot: Int
+  Rnd: Int
+  IsSlack: Boolean
+  EventDate: Date
+  EventDateTo: Date
+  TimeZoneUID: Int
+  Disciplines: [PerformanceDiscipline]
+  isUpcoming: Boolean
+  PerformanceDateWithTimezone: Date
+  TimezoneAbbreviation: String
+  TimezoneNameIana: String
+  TimezoneOffsetInMinutes: Int
+}
+input PerformanceInput {
+  PerformanceUID: Int
+  EventUID: Int
+  PerformanceNum: Int
+  PerformanceDate: Date
+  PerformanceName: String
+  CompLevel: Int
+  CompLevelAsString: String
+  Rot: Int
+  Rnd: Int
+  IsSlack: Boolean
+  EventDate: Date
+  EventDateTo: Date
+  TimeZoneUID: Int
+  Disciplines: [PerformanceDisciplineInput]
+}

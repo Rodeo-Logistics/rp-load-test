@@ -1,0 +1,26 @@
+type DisciplineFee {
+  EventEntryDisciplineFeeUID: Int
+  EventUID: Int
+  DisciplineUID: Int
+  Fee: Float
+  Discipline: String
+  IsDisciplineInEvent: Int
+  NumberOfGos: Int
+  NumberOfProgressives: Int
+  SemiFinals: Boolean
+  Finals: Boolean
+  MaxNumberOfEntriesPerAthlete: Int
+}
+input DisciplineFeeInput {
+  EventEntryDisciplineFeeUID: Int
+  EventUID: Int
+  DisciplineUID: Int
+  Fee: Int
+  Discipline: String
+  IsDisciplineInEvent: Int
+  NumberOfGos: Int
+  NumberOfProgressives: Int
+  SemiFinals: Boolean
+  Finals: Boolean
+  MaxNumberOfEntriesPerAthlete: Int
+}

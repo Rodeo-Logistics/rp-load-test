@@ -1,0 +1,4 @@
+type DisciplineNominatableSegment {
+  Discipline: Discipline,
+	Segment: Segment
+}
